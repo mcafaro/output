@@ -29,6 +29,10 @@ jobs:
         id: setup-matlab
         uses: matlab-actions/setup-matlab@v2
 
-      # Runs a set of commands using the runners shell
-      - name: Print MATLAB root
+      - name: Print MATLAB root folder directly
         run: echo ${{ steps.setup-matlab.outputs.matlabroot }}
+      
+      - name: Print MATLAB root folder from env var
+        env:
+          MATLAB_ROOT: ${{ steps.setup-matlab.outputs.matlabroot }}
+        run: echo $MATLAB_ROOT
